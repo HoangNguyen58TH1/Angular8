@@ -4,7 +4,6 @@ import { Product } from './../product.model';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
   @Input() products: Product[];
@@ -17,13 +16,20 @@ export class ProductListComponent implements OnInit {
   }
 
   removeProduct(product_id: string): void {
+    // console.log('product_id: ', product_id);
+
     this.onRemoveProduct.emit(product_id);
   }
 
-  updateQuantity(element){
-    console.log(element.value);
-    this.onUpdateQuantity.emit()
-    // element.value <= 20;
+  updateQuantity(product_id: string, element): void{
+    // console.log('product_id: ', product_id);
+    let valueInput = Number(element.value);
+    // console.log(typeof valueInput);
+    // console.log(element.value);
+    // console.log(typeof element.value);
+    // console.log(element);
+    // console.log(typeof element);
+    this.onUpdateQuantity.emit({product_id, valueInput})
   }
 
 }

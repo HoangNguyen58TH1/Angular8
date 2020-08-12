@@ -41,6 +41,7 @@ export class AppComponent {
   ]
 
   removeProduct(product_id: string){
+    // console.log('product_id: ', product_id);
     // alert('function remove product o app: ' + product_id);
 
     //find index
@@ -62,13 +63,32 @@ export class AppComponent {
     this.total = this.subTotal - this.tax;
   }
 
-  updateQuantity(){
+  updateQuantity(object){
+    // console.log('object: ', object);
+    console.log('product_id: ', object.product_id);
+    console.log('valueInput: ', object.valueInput);
+
+    //find index
+    const index = this.products.findIndex(product => product.id === object.product_id);
+    //remove element in array
+    // console.log('index: ', index);
+    if(index !== -1){
+      // this.products.splice(index, 1);
+      // this.products[object.product_id];
+      // console.log(this.products[index].quantity);
+      this.products[index].quantity = object.valueInput;
+      // console.log(this.products[index].quantity);
+    }
+
+
     let numberItems = 0;
+    console.log('numberItems: ', numberItems);
+
     for(const product of this.products){
       numberItems += product.quantity;
     }
     this.numberItems = numberItems;
-    // console.log('toni');
+    console.log('numberItems: ', numberItems);
   }
 
 }

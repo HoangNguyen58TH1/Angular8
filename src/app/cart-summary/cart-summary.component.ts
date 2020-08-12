@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cart-summary',
-  templateUrl: './cart-summary.component.html',
-  styleUrls: ['./cart-summary.component.css']
+  templateUrl:
+  './cart-summary.component.html',
 })
 export class CartSummaryComponent implements OnInit {
   @Input() subTotal: number;
