@@ -11,7 +11,7 @@ export class AppComponent {
   numberItems:number = 9;
   subTotal: number = 29;
   tax: number = 2.9;
-  total: number = 26.1;
+  total: number = 31.9;
 
   products: Product[] = [
     {
@@ -60,7 +60,7 @@ export class AppComponent {
     this.numberItems = numberItems;
     this.subTotal = subTotal;
     this.tax = this.subTotal*10/100;
-    this.total = this.subTotal - this.tax;
+    this.total = this.subTotal + this.tax;
   }
 
   updateQuantity(object){
@@ -81,14 +81,17 @@ export class AppComponent {
     }
 
 
+    //Tinh quantity + price
     let numberItems = 0;
-    console.log('numberItems: ', numberItems);
-
+    let subTotal = 0;
     for(const product of this.products){
       numberItems += product.quantity;
+      subTotal += product.price * product.quantity;
     }
     this.numberItems = numberItems;
-    console.log('numberItems: ', numberItems);
+    this.subTotal = subTotal;
+    this.tax = this.subTotal*10/100;
+    this.total = this.subTotal + this.tax;
   }
 
 }
