@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './product.model';
+import { PromoCode } from './promo-code.module';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,12 @@ import { Product } from './product.model';
 })
 
 export class AppComponent {
-  numberItems:number = 9;
+  numberItems: number = 9;
   subTotal: number = 29;
   tax: number = 2.9;
   total: number = 31.9;
+  discountPercent: number = 0;
+  discount: number = 0;
 
   products: Product[] = [
     {
@@ -40,30 +43,49 @@ export class AppComponent {
     }
   ]
 
-  removeProduct(product_id: string){
+  promoCodes: PromoCode[] = [
+    {
+      id: 1,
+      code: 'hoang',
+      promoCode: 10,
+    },
+    {
+      id: 2,
+      code: 'toni',
+      promoCode: 20,
+    }
+  ]
+
+  updateCartSummary() {
+    //Tinh quantity + price
+    let numberItems = 0;
+    let subTotal = 0;
+    for (const product of this.products) {
+      numberItems += product.quantity;
+      subTotal += product.price * product.quantity;
+    }
+    this.numberItems = numberItems;
+    this.subTotal = subTotal;
+    this.tax = this.subTotal * 10 / 100;
+    this.total = this.subTotal + this.tax - this.discount;
+  }
+
+  removeProduct(product_id: string) {
     // console.log('product_id: ', product_id);
     // alert('function remove product o app: ' + product_id);
 
     //find index
     const index = this.products.findIndex(product => product.id === product_id);
     //remove element in array
-    if(index !== -1){
+    if (index !== -1) {
       this.products.splice(index, 1);
     }
-    //Tinh quantity + price
-    let numberItems = 0;
-    let subTotal = 0;
-    for(const product of this.products){
-      numberItems += product.quantity;
-      subTotal += product.price * product.quantity;
-    }
-    this.numberItems = numberItems;
-    this.subTotal = subTotal;
-    this.tax = this.subTotal*10/100;
-    this.total = this.subTotal + this.tax;
+    this.discount = 0;
+
+    this.updateCartSummary();
   }
 
-  updateQuantity(object){
+  updateQuantity(object) {
     // console.log('object: ', object);
     console.log('product_id: ', object.product_id);
     console.log('valueInput: ', object.valueInput);
@@ -71,27 +93,24 @@ export class AppComponent {
     //find index
     const index = this.products.findIndex(product => product.id === object.product_id);
     //remove element in array
-    // console.log('index: ', index);
-    if(index !== -1){
-      // this.products.splice(index, 1);
-      // this.products[object.product_id];
-      // console.log(this.products[index].quantity);
+    if (index !== -1) {
       this.products[index].quantity = object.valueInput;
-      // console.log(this.products[index].quantity);
     }
+    this.discount = 0;
 
+    this.updateCartSummary();
+  }
 
-    //Tinh quantity + price
-    let numberItems = 0;
-    let subTotal = 0;
-    for(const product of this.products){
-      numberItems += product.quantity;
-      subTotal += product.price * product.quantity;
-    }
-    this.numberItems = numberItems;
-    this.subTotal = subTotal;
-    this.tax = this.subTotal*10/100;
-    this.total = this.subTotal + this.tax;
+  handleApplyPromoCode(valueInput:string){
+    console.log('valueInput: ', valueInput);
+
+    const promoCodeElement = this.promoCodes.find(promoCode => promoCode.code === valueInput)
+    this.discountPercent = promoCodeElement ? promoCodeElement.promoCode : 0;
+    this.discount = (this.subTotal * this.discountPercent)/100;
+    console.log('discountPercent: ', this.discountPercent);
+    console.log('discount: ', this.discount);
+
+    this.updateCartSummary();
   }
 
 }

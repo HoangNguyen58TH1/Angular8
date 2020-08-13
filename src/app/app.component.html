@@ -8,8 +8,8 @@
   </section>
 
   <section class="container">
-    <app-promo-code></app-promo-code>
+    <app-promo-code (onHandleApplyPromoCode)="handleApplyPromoCode($event)"></app-promo-code>
 
-    <app-cart-summary [subTotal]="subTotal" [tax]="tax" [total]="total"></app-cart-summary>
+    <app-cart-summary [subTotal]="subTotal" [tax]="tax" [total]="total" [discount]="discount" [discountPercent]="discountPercent"></app-cart-summary>
   </section>
 </main>
