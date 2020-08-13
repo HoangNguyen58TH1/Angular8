@@ -6,6 +6,9 @@ import { CartHeaderComponent } from './cart-header/cart-header.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { PromoCodeComponent } from './promo-code/promo-code.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import { PromoCodeComponent } from './promo-code/promo-code.component';
     CartHeaderComponent,
     CartSummaryComponent,
     ProductListComponent,
-    PromoCodeComponent
+    PromoCodeComponent,
+    LoginComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Product } from './product.model';
 import { PromoCode } from './promo-code.module';
+// import { GetApiService } from './get-api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,28 @@ import { PromoCode } from './promo-code.module';
 })
 
 export class AppComponent {
+
+  constructor(private http: HttpClient) { }
+  Submit(object) {
+    this.http.post('http://nomnom.xampps/api/v1/loginJWT', object).subscribe((result) => {
+      console.log('result', result);
+    })
+
+    console.log('object: ', object);
+    console.log('email: ', object.email);
+    console.log('password: ', object.password);
+  }
+
+  title: string = 'Hoang Toni';
+
+  // ngOnInit(){
+  //   this.api.apiCall().subscribe((data) => {
+  //     console.warn('get api data: ', data)
+  //     this.title = data['title'];
+  //   })
+  // }
+
+
   numberItems: number = 9;
   subTotal: number = 29;
   tax: number = 2.9;
@@ -56,6 +80,8 @@ export class AppComponent {
     }
   ]
 
+
+
   updateCartSummary() {
     //Tinh quantity + price
     let numberItems = 0;
@@ -101,12 +127,12 @@ export class AppComponent {
     this.updateCartSummary();
   }
 
-  handleApplyPromoCode(valueInput:string){
+  handleApplyPromoCode(valueInput: string) {
     console.log('valueInput: ', valueInput);
 
     const promoCodeElement = this.promoCodes.find(promoCode => promoCode.code === valueInput)
     this.discountPercent = promoCodeElement ? promoCodeElement.promoCode : 0;
-    this.discount = (this.subTotal * this.discountPercent)/100;
+    this.discount = (this.subTotal * this.discountPercent) / 100;
     console.log('discountPercent: ', this.discountPercent);
     console.log('discount: ', this.discount);
 
