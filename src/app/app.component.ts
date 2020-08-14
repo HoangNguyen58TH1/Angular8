@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from './product.model';
 import { PromoCode } from './promo-code.module';
 // import { GetApiService } from './get-api.service';
@@ -10,9 +10,37 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   constructor(private http: HttpClient) { }
+
+  // ngOnChanges(): void {
+  //   console.log('ngOnChanges App --------------------');
+  // }
+  ngOnInit(): void {
+    console.log('ngOnInit App --------------------');
+    this.updateCartSummary();
+  }
+  // ngDoCheck(): void {
+  //   console.log('ngDoCheck App --------------------');
+  // }
+  // ngAfterContentInit(): void {
+  //   console.log('ngAfterContentInit App --------------------');
+  // }
+  // ngAfterContentChecked(): void {
+  //   console.log('ngAfterContentChecked App --------------------');
+  // }
+  // ngAfterViewInit(): void {
+  //   console.log('ngAfterViewInit App --------------------');
+  // }
+  // ngAfterViewChecked(): void {
+  //   console.log('ngAfterViewChecked App --------------------');
+  // }
+  // ngOnDestroy(): void {
+  //   console.log('ngOnDestroy App --------------------');
+  // }
+
+
   Submit(object) {
     this.http.post('http://nomnom.xampps/api/v1/loginJWT', object).subscribe((result) => {
       console.log('result', result);
@@ -33,10 +61,16 @@ export class AppComponent {
   // }
 
 
-  numberItems: number = 9;
-  subTotal: number = 29;
-  tax: number = 2.9;
-  total: number = 31.9;
+  // numberItems: number = 9;
+  // subTotal: number = 29;
+  // tax: number = 2.9;
+  // total: number = 31.9;
+  // discountPercent: number = 0;
+  // discount: number = 0;
+  numberItems: number = 0;
+  subTotal: number = 0;
+  tax: number = 0;
+  total: number = 0;
   discountPercent: number = 0;
   discount: number = 0;
 
@@ -135,6 +169,7 @@ export class AppComponent {
     this.discount = (this.subTotal * this.discountPercent) / 100;
     console.log('discountPercent: ', this.discountPercent);
     console.log('discount: ', this.discount);
+    alert('Promo code is: \n "hoang": Discount is 10% \n "toni": Discount is 20%')
 
     this.updateCartSummary();
   }
