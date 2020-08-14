@@ -1,57 +1,70 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ title }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="" #userPost="ngForm" [formGroup]="profileForm" (ngSubmit)="Submit(userPost)">
+        <div class="wrapper-page account-page-full">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+          <div class="card">
+              <div class="card-block">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" formControlName="email" value="" required autocomplete="email" autofocus>
+                  <div class="account-box">
 
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
-                            </div>
-                        </div>
+                      <div class="card-box p-5">
+                          <h2 class="text-uppercase text-center pb-4">
+                              <a href="index.html" class="text-success">
+                                  <span><img src="assets/logo.png" alt="" height="26"></span>
+                              </a>
+                          </h2>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                          <form method="POST" action="" #userPost="ngForm" [formGroup]="profileForm" (ngSubmit)="Submit(userPost)">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" formControlName="password" required autocomplete="current-password">
+                              <div class="form-group m-b-20 row d-flex justify-content-center">
+                                  <div class="col-md-6 col-sm-8">
+                                      <label for="emailaddress">Email address</label>
+                                      <input class="form-control" type="email" id="emailaddress" formControlName="email" required="" placeholder="Enter your email">
+                                  </div>
+                              </div>
 
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong></strong>
-                                    </span>
-                            </div>
-                        </div>
+                              <div class="form-group row m-b-20 d-flex justify-content-center">
+                                  <div class="col-md-6 col-sm-8">
+                                      <a href="page-recoverpw.html" class="text-muted float-right"><small>Forgot your password?</small></a>
+                                      <label for="password">Password</label>
+                                      <input class="form-control" type="password" required="" id="password" formControlName="password" placeholder="Enter your password">
+                                  </div>
+                              </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" [disabled]="!profileForm.valid">
-                                  Login
-                                </button>
+                              <div class="form-group row m-b-20 d-flex justify-content-center">
+                                  <div class="col-md-6 col-sm-8">
 
-                                <!-- <a class="btn btn-link" href="#">
-                                    Forgot Your Password?
-                                </a> -->
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                                      <div class="checkbox checkbox-custom">
+                                          <input id="remember" type="checkbox" checked="">
+                                          <label for="remember" style="margin-left:10px">
+                                              Remember me
+                                          </label>
+                                      </div>
 
-                <!-- start message -->
-                <!-- <div class="alert alert-success">
-                </div> -->
-                <!-- end message -->
+                                  </div>
+                              </div>
 
-            </div>
-        </div>
+                              <div class="form-group row text-center m-t-10 d-flex justify-content-center">
+                                  <div class="col-md-6 col-sm-8" >
+                                      <button class="btn btn-block btn-custom waves-effect waves-light" type="submit" [disabled]="!profileForm.valid">Sign In</button>
+                                  </div>
+                              </div>
 
-    </div>
-</div>
+                          </form>
+
+                          <div class="row m-t-50 d-flex justify-content-center">
+                              <div class="col-md-6 col-sm-8 text-center">
+                                  <p class="text-muted">Don't have an account? <a href="page-register.html" class="text-dark m-l-5"><b>Sign Up</b></a></p>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="m-t-40 text-center">
+              <p class="account-copyright">2050 © Highdmin. - Coderthemes.com - Hoàng Toni đã ghé thăm nơi đây :v</p>
+          </div>
+
+      </div>
