@@ -80,7 +80,7 @@ export class AppComponent implements OnInit{
       thumbnail: '/assets/iphone_6s.jpg',
       name: 'Apple iPhone 6S 32GB',
       description: 'iPhone luôn là smartphone có sức hút trong thời gian dài và iPhone 6S cũ cũng vậy. Đã ra mắt được vài năm nhưng đây vẫn là sự lựa chọn ưa thích của không ít người dùng.',
-      price: 2,
+      price: 2000,
       quantity: 2
     },
     {
@@ -88,7 +88,7 @@ export class AppComponent implements OnInit{
       thumbnail: '/assets/iphone_x.jpg',
       name: 'iPhone Xs Max 64GB',
       description: 'iPhone Xs Max 64GB (Like New) có màn hình rộng đến 6.5inch cho nội dung hiển thị chi tiết, sắc nét. màn hình tai thỏ thời thượng. Đi cùng là hệ điều hành iOS 12 với chip A12 Bionic giúp máy chạy mượt mà mọi tác vụ',
-      price: 3,
+      price: 3000,
       quantity: 3
     },
     {
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit{
       thumbnail: '/assets/iphone_8plus.jpg',
       name: 'iPhone 8 Plus 64GB',
       description: 'iPhone 8 Plus 64GB cũ nhưng ngoại hình và chất lượng máy tương đương với máy mới. Tuy ra mắt cùng lúc với iPhone 8 nhưng phiên bản iPhone 8 Plus đem đến trải nghiệm vượt trội hơn.',
-      price: 4,
+      price: 4000,
       quantity: 4
     }
   ]

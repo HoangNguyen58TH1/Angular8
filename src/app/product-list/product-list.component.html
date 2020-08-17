@@ -12,7 +12,7 @@
         <div class="description">
           {{ product.description }}
         </div>
-        <div class="price">${{ product.price }}</div>
+        <div class="price">{{ product.price | currency:'VND':'symbol':'1.0-0':'vi-VN'}}</div>
       </div>
     </div>
 
